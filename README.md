@@ -52,7 +52,7 @@ The application should now be running at `http://localhost:3000`.
 
 ## Deployment
 
-The project is deployed using Vercel. You can access the live demo at: [https://jobskit-clone.vercel.app/](https://jobskit-clone.vercel.app/)
+The project will be deployed.
 
 ## Code Structure
 
