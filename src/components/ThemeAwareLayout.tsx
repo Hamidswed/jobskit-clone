@@ -1,6 +1,6 @@
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "@/styles/theme";
-import { CssBaseline, Theme } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 import { useTheme } from "@/context/ThemeContext";
 
 const ThemeAwareLayout: React.FC<{ children: React.ReactNode }> = ({

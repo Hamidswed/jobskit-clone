@@ -5,11 +5,9 @@ import {
   useContext,
   useState,
   ReactNode,
-  useEffect,
 } from "react";
 import { User } from "../types/user";
 import { useRouter } from "next/navigation";
-import { getUserApi } from "@/services/authServices";
 
 type AuthContextType = {
   user: User | null;
