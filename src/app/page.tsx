@@ -1,16 +1,15 @@
-import React from "react";
 import { Box, Typography, Link, Container } from "@mui/material";
 
 const Home: React.FC = () => {
   return (
     <Container
-      maxWidth="sm" // تعیین حداکثر عرض
+      maxWidth="sm" 
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        minHeight: "100vh", // قرار دادن در وسط صفحه
-        padding: "16px", // فاصله مناسب
+        minHeight: "100vh", 
+        padding: "16px",
       }}
     >
       <Box
@@ -19,7 +18,7 @@ const Home: React.FC = () => {
           backgroundColor: "background.paper",
           borderRadius: 2,
           boxShadow: 3,
-          textAlign: "center", // مرکزچینی متن در باکس
+          textAlign: "center", 
         }}
       >
         <Typography
@@ -33,13 +32,13 @@ const Home: React.FC = () => {
           variant="body1"
           sx={{ fontSize: { xs: "0.875rem", sm: "1rem", md: "1.25rem" } }}
         >
-          <Link href="/user/login">Login</Link> to access job listings.
+          <Link href="/user/login">Login</Link> to access the list of jobs.
         </Typography>
         <Typography
           variant="body1"
-          sx={{ fontSize: { xs: "0.875rem", sm: "1rem", md: "1.25rem" } }}
+          sx={{ fontSize: { xs: "0.875rem", sm: "1rem", md: "1.25rem" },marginTop:"1rem" }}
         >
-          <Link href="/jobs">Jobs</Link> to access job listings.
+          <Link href="/jobs">Jobs</Link> to see the list of jobs.
         </Typography>
       </Box>
     </Container>

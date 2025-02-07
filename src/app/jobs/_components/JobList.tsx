@@ -1,5 +1,15 @@
 "use client";
+
+import { getDetaildJobsApi, getJobsApi } from "@/services/jobServices";
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import React, { useCallback, useEffect, useState } from "react";
+import { useJobContext } from "@/context/JobContext";
+import { useTheme } from "@mui/material/styles";
+import { useAuth } from "@/context/AuthContext";
+import { Category, Job } from "@/types/job";
+import Modal from "@/components/Modal";
+import JobForm from "./JobForm";
+import JobCard from "./JobCard";
 import {
   TextField,
   Button,
@@ -10,15 +20,6 @@ import {
   Paper,
   useMediaQuery,
 } from "@mui/material";
-import { Category, Job } from "@/types/job";
-import { useAuth } from "@/context/AuthContext";
-import { getDetaildJobsApi, getJobsApi } from "@/services/jobServices";
-import JobForm from "./JobForm";
-import JobCard from "./JobCard";
-import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
-import { useTheme } from "@mui/material/styles";
-import Modal from "@/components/Modal";
-import { useJobContext } from "@/context/JobContext";
 
 const JobList: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -133,25 +134,30 @@ const JobList: React.FC = () => {
           marginTop: "2rem",
         }}
       >
-        {loading && <CircularProgress />}
+        {loading && jobs.length === 0 && <CircularProgress />}
       </Container>
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: {
-            xs: "repeat(1, 1fr)",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
-            lg: "repeat(4, 1fr)",
-          },
-          gap: 2,
-          padding: 2,
-        }}
-      >
-        {filteredJobs.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
-      </Box>
+      {jobs.length !== 0 && filteredJobs.length === 0 ? (
+        <div>Not found!</div>
+      ) : (
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(1, 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+              lg: "repeat(4, 1fr)",
+            },
+            gap: 2,
+            padding: 2,
+          }}
+        >
+          {filteredJobs.map((job) => (
+            <JobCard key={job.id} job={job} />
+          ))}
+        </Box>
+      )}
+
       <Modal
         title="Add job"
         open={openModal}

@@ -1,11 +1,11 @@
 "use client";
 
-import { createPortal } from "react-dom";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { CloseRounded as CloseIcon } from "@mui/icons-material";
 import { Box, Modal as MuiModal, Typography, IconButton } from "@mui/material";
+import { CloseRounded as CloseIcon } from "@mui/icons-material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
+import { useTheme } from "@mui/material/styles";
+import { createPortal } from "react-dom";
 
 interface ModalProps {
   open: boolean;

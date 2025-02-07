@@ -1,5 +1,3 @@
-// src/context/AuthContext.tsx
-
 "use client";
 
 import {
@@ -30,14 +28,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     router.push("/user/login");
   };
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     await getUserApi();
-  //   }
-
-  //   fetchData();
-  // }, []);
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

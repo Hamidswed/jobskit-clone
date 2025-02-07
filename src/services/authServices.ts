@@ -12,7 +12,6 @@ export async function loginApi({
     .then(({ data }) => data);
 }
 
-export async function getUserApi(){
-  return http.get("/user/whoami").then(({data})=>data)
+export async function getUserApi() {
+  return http.get("/user/whoami").then(({ data }) => data);
 }
-

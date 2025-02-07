@@ -1,4 +1,3 @@
-// app/jobs/page.tsx  
 
 import JobList from "./_components/JobList";
 

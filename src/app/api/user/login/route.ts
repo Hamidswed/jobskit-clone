@@ -1,5 +1,5 @@
-import { User } from "@/types/user";
 import { NextResponse } from "next/server";
+import { User } from "@/types/user";
 
 const users: User[] = [
   {

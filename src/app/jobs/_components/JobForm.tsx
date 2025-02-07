@@ -1,8 +1,8 @@
 // src/app/components/JobForm/JobForm.tsx  
+import { TextField, Button, Box, Paper } from "@mui/material";  
+import { useForm, SubmitHandler } from "react-hook-form";  
 import { Job } from "@/types/job";  
 import React from "react";  
-import { useForm, SubmitHandler } from "react-hook-form";  
-import { TextField, Button, Box, Paper } from "@mui/material";  
 
 interface JobFormProps {  
   onJobAdded: (job: Job) => void;

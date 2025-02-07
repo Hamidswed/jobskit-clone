@@ -37,7 +37,7 @@ This is a clone of the JobsKit application, built using TypeScript, React.js, Ne
 
 1. Clone the repository:
 
-git clone https://github.com/your-username/jobskit-clone.git
+git clone https://github.com/Hamidswed/jobskit-clone
 
 2. Install dependencies:
 

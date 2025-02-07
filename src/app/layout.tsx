@@ -1,15 +1,15 @@
 "use client";
 
-import { ReactNode } from "react";
-import "../styles/globals.css";
+import { ThemeProvider, useTheme } from "@/context/ThemeContext";
+import { ThemeProvider as MUIThemeProvider } from "@mui/material";
+import ThemeAwareLayout from "@/components/ThemeAwareLayout";
+import { lightTheme, darkTheme } from "@/styles/theme";
 import { AuthProvider } from "@/context/AuthContext";
 import { JobProvider } from "@/context/JobContext"
 import { Toaster } from "react-hot-toast";
 import Header from "@/components/Header";
-import { lightTheme, darkTheme } from "@/styles/theme";
-import { ThemeProvider as MUIThemeProvider } from "@mui/material";
-import { ThemeProvider, useTheme } from "@/context/ThemeContext";
-import ThemeAwareLayout from "@/components/ThemeAwareLayout";
+import { ReactNode } from "react";
+import "../styles/globals.css";
 
 
 // A component to determine the theme

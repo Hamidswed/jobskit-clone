@@ -1,10 +1,10 @@
-// context/JobContext.tsx
 import { createContext, useState, useContext } from "react";
+import toast from "react-hot-toast";
 import { Job } from "@/types/job";
 
 type JobContextType = {
   jobs: Job[];
-  setJobs: (jobs: Job[]) => void;
+  setJobs: React.Dispatch<React.SetStateAction<Job[]>>
   toggleBookmark: (jobId: number) => void;
 };
 
@@ -21,6 +21,7 @@ export const JobProvider: React.FC<{ children: React.ReactNode }> = ({
         job.id === jobId ? { ...job, isBookmarked: !job.isBookmarked } : job
       )
     );
+    toast.success("Added to bookmark successfully!");
   };
 
   return (

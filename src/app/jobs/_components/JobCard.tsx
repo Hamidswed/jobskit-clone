@@ -1,18 +1,19 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Job } from "@/types/job";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { formatDate } from "../../../utils/formatDate";
 import { useJobContext } from "@/context/JobContext";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import CardHeader from "@mui/material/CardHeader";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import truncateText from "@/utils/truncateText";
+import CardMedia from "@mui/material/CardMedia";
+import { red } from "@mui/material/colors";
+import Avatar from "@mui/material/Avatar";
+import Card from "@mui/material/Card";
+import { Job } from "@/types/job";
+import * as React from "react";
 
 type PropsType = {
   job: Job;
@@ -33,7 +34,7 @@ export default function JobCard({ job }: PropsType) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={job.title}
+        title={truncateText(job.title,20)}
         subheader={formatDate(job.datePosted as string)}
       />
       <CardMedia
