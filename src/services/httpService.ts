@@ -24,11 +24,11 @@ app.interceptors.response.use(
 );
 
 const http = {
-  get: (url: string) => app.get(url),
-  post: (url: string, data: any) => app.post(url, data),
-  delete: (url: string) => app.delete(url),
-  put: (url: string, data: any) => app.put(url, data),
-  patch: (url: string, data: any) => app.patch(url, data),
+  get: app.get,
+  post: app.post,
+  delete: app.delete,
+  put: app.put,
+  patch: app.patch,
 };
 
 export default http;
