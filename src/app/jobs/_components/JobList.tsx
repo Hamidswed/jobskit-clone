@@ -29,27 +29,27 @@ const JobList: React.FC = () => {
   const { user, logout } = useAuth();
   const theme = useTheme();
 
-  const fetchJobs = async () => {
-    setLoading(true);
-    try {
-      const jobs: Job[] = !user
-        ? await getJobsApi()
-        : await getDetaildJobsApi();
-      const jobsWithBookmark = jobs.map((job) => ({
-        ...job,
-        isBookmarked: false,
-      }));
-      setJobs(jobsWithBookmark);
-    } catch (error) {
-      console.error("Error fetching jobs:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const fetchJobs = useCallback(async () => {  
+    setLoading(true);  
+    try {  
+      const jobs: Job[] = !user  
+        ? await getJobsApi()  
+        : await getDetaildJobsApi();  
+      const jobsWithBookmark = jobs.map((job) => ({  
+        ...job,  
+        isBookmarked: false,  
+      }));  
+      setJobs(jobsWithBookmark);  
+    } catch (error) {  
+      console.error("Error fetching jobs:", error);  
+    } finally {  
+      setLoading(false);  
+    }  
+  }, [setJobs, user]);
 
   useEffect(() => {
     fetchJobs();
-  }, []);
+  }, [fetchJobs]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
