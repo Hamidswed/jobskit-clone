@@ -15,15 +15,25 @@ export const JobProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [jobs, setJobs] = useState<Job[]>([]);
 
-  const toggleBookmark = (jobId: number) => {
-    setJobs((prevJobs) =>
-      prevJobs.map((job) =>
-        job.id === jobId ? { ...job, isBookmarked: !job.isBookmarked } : job
-      )
-    );
-    toast.success("Added to bookmark successfully!");
-  };
+  const toggleBookmark = (jobId: number) => {  
+    setJobs((prevJobs) => {  
+      const jobToToggle = prevJobs.find((job) => job.id === jobId);  
+      if (jobToToggle) {  
+        const isNowBookmarked = !jobToToggle.isBookmarked;  
 
+        if (isNowBookmarked) {  
+          toast.success("Added to bookmark successfully!");  
+        } else {  
+          toast.success("Removed from bookmark successfully!");  
+        }  
+
+        return prevJobs.map((job) =>  
+          job.id === jobId ? { ...job, isBookmarked: isNowBookmarked } : job  
+        );  
+      }  
+      return prevJobs;  
+    });  
+  }; 
   return (
     <JobContext.Provider value={{ jobs, setJobs, toggleBookmark }}>
       {children}

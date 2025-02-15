@@ -1,5 +1,5 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { formatDate } from "../../../utils/formatDate";
 import { useJobContext } from "@/context/JobContext";
 import CardContent from "@mui/material/CardContent";
@@ -34,7 +34,7 @@ export default function JobCard({ job }: PropsType) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={truncateText(job.title,20)}
+        title={truncateText(job.title, 20)}
         subheader={formatDate(job.datePosted as string)}
       />
       <CardMedia
@@ -56,7 +56,7 @@ export default function JobCard({ job }: PropsType) {
             color: job.isBookmarked ? red[500] : "inherit",
           }}
         >
-          <FavoriteIcon />
+          <BookmarkIcon />
         </IconButton>
       </CardActions>
     </Card>

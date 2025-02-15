@@ -1,7 +1,7 @@
 
 import JobList from "./_components/JobList";
 
-const JobPage = () => {  
+const JobPage = () => {
   return (  
     <div>  
       <JobList />  
