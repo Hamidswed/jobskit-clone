@@ -20,6 +20,7 @@ import {
   Paper,
   useMediaQuery,
 } from "@mui/material";
+import toast from "react-hot-toast";
 
 const JobList: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -29,22 +30,22 @@ const JobList: React.FC = () => {
   const { user, logout } = useAuth();
   const theme = useTheme();
 
-  const fetchJobs = useCallback(async () => {  
-    setLoading(true);  
-    try {  
-      const jobs: Job[] = !user  
-        ? await getJobsApi()  
-        : await getDetaildJobsApi();  
-      const jobsWithBookmark = jobs.map((job) => ({  
-        ...job,  
-        isBookmarked: false,  
-      }));  
-      setJobs(jobsWithBookmark);  
-    } catch (error) {  
-      console.error("Error fetching jobs:", error);  
-    } finally {  
-      setLoading(false);  
-    }  
+  const fetchJobs = useCallback(async () => {
+    setLoading(true);
+    try {
+      const jobs: Job[] = !user
+        ? await getJobsApi()
+        : await getDetaildJobsApi();
+      const jobsWithBookmark = jobs.map((job) => ({
+        ...job,
+        isBookmarked: false,
+      }));
+      setJobs(jobsWithBookmark);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    } finally {
+      setLoading(false);
+    }
   }, [setJobs, user]);
 
   useEffect(() => {
@@ -69,6 +70,7 @@ const JobList: React.FC = () => {
         isBookmarked: false,
       };
       setJobs((prevJobs: Job[]) => [...prevJobs, newJobEntry]);
+      toast.success("Added job successfully!");
     },
     [setJobs]
   );
