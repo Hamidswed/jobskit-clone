@@ -15,11 +15,13 @@ export const JobProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [jobs, setJobs] = useState<Job[]>([]);
 
-  const toggleBookmark = (jobId: number) => {  
+  const toggleBookmark = (jobId: number) => {
     setJobs((prevJobs) => {  
       const jobToToggle = prevJobs.find((job) => job.id === jobId);  
       if (jobToToggle) {  
-        const isNowBookmarked = !jobToToggle.isBookmarked;  
+        const isNowBookmarked = !jobToToggle.isBookmarked;
+        
+        console.log(`Job ID: ${jobId}, Bookmarked: ${isNowBookmarked}`);  
 
         if (isNowBookmarked) {  
           toast.success("Added to bookmark successfully!");  

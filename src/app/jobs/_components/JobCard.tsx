@@ -1,5 +1,6 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import { formatDate } from "../../../utils/formatDate";
 import { useJobContext } from "@/context/JobContext";
 import CardContent from "@mui/material/CardContent";
@@ -49,15 +50,21 @@ export default function JobCard({ job }: PropsType) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton
-          aria-label="add to favorites"
-          onClick={() => toggleBookmark(job.id)}
-          sx={{
-            color: job.isBookmarked ? red[500] : "inherit",
-          }}
-        >
-          <BookmarkIcon />
-        </IconButton>
+        {!job.isBookmarked ? (
+          <IconButton
+            aria-label="remove from bookmark"
+            onClick={() => toggleBookmark(job.id)}
+          >
+            <BookmarkBorderIcon />
+          </IconButton>
+        ) : (
+          <IconButton
+            aria-label="add to bookmark"
+            onClick={() => toggleBookmark(job.id)}
+          >
+            <BookmarkIcon />
+          </IconButton>
+        )}
       </CardActions>
     </Card>
   );
